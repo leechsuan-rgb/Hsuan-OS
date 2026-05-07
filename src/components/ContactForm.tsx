@@ -22,26 +22,35 @@ export default function ContactForm({ t }: ContactFormProps) {
     }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    
-    // 創建mailto鏈接
-    const subject = encodeURIComponent(`聯絡請求 from ${formData.name}`);
-    const body = encodeURIComponent(
-      `姓名: ${formData.name}\n\nEmail: ${formData.email}\n\n訊息:\n${formData.message}`
-    );
-    
-    const mailtoLink = `mailto:leechsuan@gmail.com?subject=${subject}&body=${body}`;
-    
-    // 打開郵件客戶端
-    window.open(mailtoLink, '_blank');
-    
-    // 模擬發送過程
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+
+    try {
+      // 替換為您的Google Apps Script Web App URL
+      const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(result.message || '發送失敗');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('發送失敗，請稍後再試或直接聯絡 leechsuan@gmail.com');
+      setStatus('idle');
+    }
   };
 
   return (
