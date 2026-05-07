@@ -25,7 +25,7 @@ export default function Experience({ t }: ExperienceProps) {
             >
               <div className="flex items-center gap-3 mb-1">
                 {item.logo && (
-                  <div className="w-8 h-8 rounded-md overflow-hidden bg-white/10 shrink-0">
+                  <div className="w-8 h-8 rounded-md overflow-hidden bg-black shrink-0">
                     <img src={item.logo} alt={`${item.company} logo`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                 )}

@@ -11,18 +11,7 @@ export default function Navbar({ lang, setLang, t }: NavbarProps) {
     <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-5xl">
       <div className="bg-white rounded-full px-8 py-4 shadow-sm border border-gray-100 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 bg-brand-dark/10">
-            <img 
-              src="/profile.jpg" 
-              alt="Profile" 
-              className="w-full h-full object-cover" 
-              referrerPolicy="no-referrer"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(t.hero.name)}&background=random&color=fff&size=128`;
-              }}
-            />
-          </div>
-          <span className="font-bold tracking-tight text-lg hidden sm:block">Hsuan OS</span>
+          <span className="font-bold tracking-tight text-lg">Hsuan OS</span>
         </div>
         
         <div className="flex items-center gap-8 font-semibold text-sm">

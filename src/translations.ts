@@ -88,7 +88,7 @@ export const translations = {
         },
         {
           title: "NSTC – FITI Program",
-          image: "/fiti-photo.jpg",
+          image: "/fiti-photo.png",
           desc: "Selected through FITI’s rigorous evaluation for strong technical capabilities, earning national-level recognition and accelerating global market expansion."
         },
         {
@@ -205,7 +205,7 @@ export const translations = {
         },
         {
           title: "國科會 – FITI 創新創業激勵陣營",
-          image: "/fiti-photo.jpg",
+          image: "/fiti-photo.png",
           desc: "透過 FITI 嚴格的評選，以堅實的技術能力獲得國家級認可，並加速拓展全球市場。"
         },
         {
