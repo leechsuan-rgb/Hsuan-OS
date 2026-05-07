@@ -7,12 +7,41 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ t }: ContactFormProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    setTimeout(() => setStatus('success'), 1500);
+    
+    // 創建mailto鏈接
+    const subject = encodeURIComponent(`聯絡請求 from ${formData.name}`);
+    const body = encodeURIComponent(
+      `姓名: ${formData.name}\n\nEmail: ${formData.email}\n\n訊息:\n${formData.message}`
+    );
+    
+    const mailtoLink = `mailto:leechsuan@gmail.com?subject=${subject}&body=${body}`;
+    
+    // 打開郵件客戶端
+    window.open(mailtoLink, '_blank');
+    
+    // 模擬發送過程
+    setTimeout(() => {
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    }, 1000);
   };
 
   return (
@@ -29,9 +58,32 @@ export default function ContactForm({ t }: ContactFormProps) {
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-2">Collaboration</span>
             <h3 className="text-xl font-black text-brand-dark mb-4 italic tracking-tighter">Get in Touch</h3>
             <form onSubmit={handleSubmit} className="space-y-3 mt-auto">
-              <input required placeholder={t.contact.name} type="text" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 font-bold" />
-              <input required placeholder={t.contact.email} type="email" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 font-bold" />
-              <textarea placeholder={t.contact.message} rows={1} className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 resize-none font-bold" />
+              <input 
+                required 
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder={t.contact.name} 
+                type="text" 
+                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 font-bold" 
+              />
+              <input 
+                required 
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder={t.contact.email} 
+                type="email" 
+                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 font-bold" 
+              />
+              <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder={t.contact.message} 
+                rows={3} 
+                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 resize-none font-bold" 
+              />
               <button 
                 type="submit" 
                 disabled={status === 'sending'}
