@@ -1,69 +1,53 @@
-// Google Apps Script 代碼 - 聯絡表單處理器
-// 部署為Web App，設置為"任何人"可以訪問
+﻿const SHEET_ID = '1_fnLYp3eT5y4xMTF-MrC4yUCo631igd7mO0evFEB5nY';
+const SHEET_NAME = 'Hsuan OS 聯絡表單';
+const EMAIL_TO = 'leechsuan@gmail.com';
 
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-
-    // 寫入Google Sheet
-    const sheetId = 'YOUR_GOOGLE_SHEET_ID'; // 請替換為您的Google Sheet ID
-    const sheet = SpreadsheetApp.openById(sheetId).getSheets()[0];
-
-    // 添加標題行（如果還沒有）
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['時間戳', '姓名', 'Email', '訊息']);
+    const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
+    let sheet = spreadsheet.getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      sheet = spreadsheet.getSheets()[0];
     }
 
-    // 添加數據
-    const timestamp = new Date().toLocaleString('zh-TW');
-    sheet.appendRow([timestamp, data.name, data.email, data.message]);
+    if (!sheet) {
+      throw new Error(`找不到工作表：${SHEET_NAME} 或者第一個工作表`);
+    }
 
-    // 發送Email通知
-    const recipientEmail = 'leechsuan@gmail.com'; // 您的Email
-    const subject = `新聯絡請求 from ${data.name}`;
-    const body = `
-新聯絡請求已收到！
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(['時間', '姓名', 'Email', '訊息']);
+    }
 
-時間: ${timestamp}
-姓名: ${data.name}
-Email: ${data.email}
-訊息:
-${data.message}
+    const timestamp = new Date();
+    sheet.appendRow([
+      timestamp,
+      data.name || '',
+      data.email || '',
+      data.message || ''
+    ]);
 
----
-此郵件由 Hsuan OS 聯絡表單自動發送
-    `.trim();
+    const subject = `Hsuan OS 新聯絡表單：${data.name || '無名氏'}`;
+    const body =
+      `姓名：${data.name || ''}\n` +
+      `Email：${data.email || ''}\n\n` +
+      `訊息：\n${data.message || ''}`;
 
-    MailApp.sendEmail(recipientEmail, subject, body);
+    MailApp.sendEmail(EMAIL_TO, subject, body);
 
-    // 返回成功響應
     return ContentService
-      .createTextOutput(JSON.stringify({ success: true, message: '訊息已成功發送！' }))
+      .createTextOutput(JSON.stringify({ success: true, message: 'Form submitted successfully' }))
       .setMimeType(ContentService.MimeType.JSON);
 
   } catch (error) {
-    console.error('Error processing form submission:', error);
-
     return ContentService
-      .createTextOutput(JSON.stringify({ success: false, message: '發送失敗，請稍後再試' }))
+      .createTextOutput(JSON.stringify({ success: false, error: error.toString() }))
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-// 測試函數（可選）
-function testFormSubmission() {
-  const testData = {
-    name: '測試用戶',
-    email: 'test@example.com',
-    message: '這是測試訊息'
-  };
-
-  const e = {
-    postData: {
-      contents: JSON.stringify(testData)
-    }
-  };
-
-  const result = doPost(e);
-  console.log(result.getContent());
+function doGet() {
+  return ContentService
+    .createTextOutput('Hsuan OS Contact Form API is running.')
+    .setMimeType(ContentService.MimeType.TEXT);
 }

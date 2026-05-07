@@ -6,16 +6,17 @@
 2. 創建新試算表，命名為 "Hsuan OS 聯絡表單"
 3. 複製試算表的 ID（網址中的長字串）
    - 網址格式: `https://docs.google.com/spreadsheets/d/[SPREADSHEET_ID]/edit`
-   - 例如: `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms`
+   - 你的 Google Sheet ID 是: `1_fnLYp3eT5y4xMTF-MrC4yUCo631igd7mO0evFEB5nY`
 
 ## 步驟 2: 設置 Google Apps Script
 
 1. 前往 [Google Apps Script](https://script.google.com)
 2. 點擊 "新建專案"
 3. 將 `google-apps-script.js` 中的代碼複製貼上
-4. **替換以下內容**:
-   - `YOUR_GOOGLE_SHEET_ID` → 您的試算表 ID
-   - `leechsuan@gmail.com` → 您的Email地址（如果需要）
+4. **已在 `google-apps-script.js` 中設定實際值**:
+   - `SHEET_ID` 已設為 `1_fnLYp3eT5y4xMTF-MrC4yUCo631igd7mO0evFEB5nY`
+   - `SHEET_NAME` 已設為 `Hsuan OS 聯絡表單`
+   - `EMAIL_TO` 已設為 `leechsuan@gmail.com`
 
 ## 步驟 3: 部署 Web App
 
