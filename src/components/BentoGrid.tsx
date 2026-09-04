@@ -68,7 +68,7 @@ export default function BentoGrid({ t }: BentoGridProps) {
         <div className="mt-12 flex flex-wrap gap-4 relative z-10 w-full">
           <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl flex-1 min-w-[150px]">
             <div className="text-3xl font-black mb-1">
-              <Counter value={429032} prefix="USD " />
+              <Counter value={429032} prefix="$" />
             </div>
             <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">{t.kpi.valuation}</div>
           </div>

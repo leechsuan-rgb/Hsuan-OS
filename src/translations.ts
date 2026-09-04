@@ -29,6 +29,7 @@ export const translations = {
           company: "Superlaty",
           role: "Founder & CEO",
           logo: "/superlaty-logo.png",
+          url: "https://superlaty.com/",
           desc: "Building the Next-Gen On-Chain Membership Finance Network 💎",
           bullets: [
             "Built the startup from 0 to 1",
@@ -43,6 +44,7 @@ export const translations = {
           company: "TABEI",
           role: "Web3 Youth Management Associate",
           logo: "/tabei-logo.png",
+          url: "https://www.chain.tw/",
           desc: "Executed digital marketing and organized seminars to promote blockchain knowledge.",
           bullets: [
             "Co-organized international blockchain events, including the Blockchain Applications & Legal Summit.",
@@ -56,6 +58,7 @@ export const translations = {
           company: "Binance",
           role: "Campus Ambassador",
           logo: "/binance-logo.png",
+          url: "https://www.binance.com/",
           desc: "Planned and executed online and offline marketing campaigns to enhance brand awareness and community engagement.",
           bullets: [
             "Managed and engaged Discord and Telegram communities, strengthening user interaction and retention.",
@@ -68,6 +71,7 @@ export const translations = {
           company: "SCU Blockchain Research Club",
           role: "President",
           logo: "/scu-logo.png",
+          url: "https://scublockchains.com/",
           desc: "Fostered university-level blockchain education and student initiatives.",
           bullets: [
             "Scaled the organization into a flagship student club with over 100 members.",
@@ -84,7 +88,7 @@ export const translations = {
         {
           title: "MEd – U-Start Plan",
           image: "/ustart-photo.jpg",
-          desc: "Selected from top Gen Z startup teams nationwide as a member of Meet Taipei’s inaugural Young Sparks cohort."
+          desc: "Selected from 300+ university teams nationwide, advancing to the top 3.8% in the highly competitive Innovation Service category."
         },
         {
           title: "NSTC – FITI Program",
@@ -94,7 +98,7 @@ export const translations = {
         {
           title: "Meet Taipei – Young Spark Team",
           image: "/young-spark-photo.jpg",
-          desc: "Selected from 300+ university teams nationwide, advancing to the top 3.8% in the highly competitive Innovation Service category."
+          desc: "Selected from top Gen Z startup teams nationwide as a member of Meet Taipei’s inaugural Young Sparks cohort."
         }
       ]
     },
@@ -146,6 +150,7 @@ export const translations = {
           company: "Superlaty",
           role: "創辦人暨執行長",
           logo: "/superlaty-logo.png",
+          url: "https://superlaty.com/",
           desc: "打造次世代鏈上會員金融網路服務 💎",
           bullets: [
             "從 0 到 1 打造新創公司",
@@ -157,9 +162,10 @@ export const translations = {
           capabilities: ["區塊鏈架構", "GTM 策略", "AI 素養"]
         },
         {
-          company: "TABEI (台灣區塊鏈生態系創新發展協會)",
+          company: "臺灣區塊鏈愛好者協會",
           role: "Web3 青年代管",
           logo: "/tabei-logo.png",
+          url: "https://www.chain.tw/",
           desc: "執行數位行銷並舉辦研討會，推廣區塊鏈領域知識。",
           bullets: [
             "協辦國際級區塊鏈活動，包含區塊鏈應用與法律高峰會 (Blockchain Applications & Legal Summit)。",
@@ -173,6 +179,7 @@ export const translations = {
           company: "Binance 幣安",
           role: "校園大使",
           logo: "/binance-logo.png",
+          url: "https://www.binance.com/",
           desc: "策劃並執行線上與線下行銷活動，提升品牌知名度與社群參與度。",
           bullets: [
             "管理並經營 Discord 與 Telegram 社群，強化用戶互動與留存率。",
@@ -185,6 +192,7 @@ export const translations = {
           company: "東吳大學區塊鏈研究社",
           role: "社長",
           logo: "/scu-logo.png",
+          url: "https://scublockchains.com/",
           desc: "推展校園區塊鏈知識普及與實務專案。",
           bullets: [
             "將組織規模化，成為擁有超過 100 名成員的指標性學生社團。",

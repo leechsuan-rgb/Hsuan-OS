@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { ExternalLink } from 'lucide-react';
 
 interface ExperienceProps {
   t: any;
@@ -23,13 +24,24 @@ export default function Experience({ t }: ExperienceProps) {
               viewport={{ once: true }}
               className={`pl-6 border-l-2 ${index === 0 ? 'border-brand-blue' : 'border-gray-800'}`}
             >
-              <div className="flex items-center gap-3 mb-1">
+              <div className="flex flex-wrap items-center gap-3 mb-1">
                 {item.logo && (
                   <div className="w-8 h-8 rounded-md overflow-hidden bg-[#0B0B0F] shrink-0">
                     <img src={item.logo} alt={`${item.company} logo`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
                 )}
                 <h3 className="text-xl font-black">{item.company}</h3>
+                {item.url && (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest text-white/80 transition-colors hover:border-brand-blue/50 hover:bg-brand-blue hover:text-white"
+                  >
+                    More
+                    <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                  </a>
+                )}
               </div>
               <p className={`${index === 0 ? 'text-brand-blue' : 'text-gray-400'} font-bold text-[10px] uppercase tracking-widest mb-3`}>{item.role}</p>
               <p className="text-gray-500 font-medium leading-relaxed text-xs">{item.desc}</p>
