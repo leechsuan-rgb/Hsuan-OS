@@ -84,7 +84,7 @@ export const translations = {
         {
           title: "MEd – U-Start Plan",
           image: "/ustart-photo.jpg",
-          desc: "Selected from 300+ university teams nationwide, advancing to the top 3.8% in the highly competitive Innovation Service category."
+          desc: "Selected from top Gen Z startup teams nationwide as a member of Meet Taipei’s inaugural Young Sparks cohort."
         },
         {
           title: "NSTC – FITI Program",
@@ -94,7 +94,7 @@ export const translations = {
         {
           title: "Meet Taipei – Young Spark Team",
           image: "/young-spark-photo.jpg",
-          desc: "Selected from top Gen Z startup teams nationwide as a member of Meet Taipei’s inaugural Young Sparks cohort."
+          desc: "Selected from 300+ university teams nationwide, advancing to the top 3.8% in the highly competitive Innovation Service category."
         }
       ]
     },
